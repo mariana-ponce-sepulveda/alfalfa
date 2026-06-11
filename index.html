@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrocomercial Chicureo - Fardos de Alfalfa y Alimento Ganadero</title>
+    <style>
+        /* Variables de Color - Paleta rústica y profesional */
+        :root {
+            --primary: #2c5e3b;       /* Verde alfalfa */
+            --primary-light: #e8f0ea; /* Fondo verde muy claro */
+            --accent: #dca134;        /* Amarillo trigo / paja */
+            --dark: #2b261f;          /* Marrón oscuro para texto */
+            --light: #f9f8f6;         /* Fondo general claro */
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-container p {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: -2px;
+        }
+
+        .contact-btn-top {
+            background-color: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn-top:hover {
+            background-color: #1e4228;
+            transform: translateY(-1px);
+        }
+
+        /* Sección Principal (Hero) */
+        .hero {
+            background: linear-gradient(rgba(44, 94, 59, 0.85), rgba(43, 38, 31, 0.9)), 
+                        url('https://images.unsplash.com/photo-1595107117004-9467268d0bbd?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #e0deda;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--dark);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(220, 161, 52, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #c99028;
+            transform: translateY(-2px);
+        }
+
+        /* Sección Beneficios */
+        .features {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow);
+            flex: 1 1 300px;
+            max-width: 360px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        /* Sección Catálogo de Productos */
+        .products {
+            background-color: var(--primary-light);
+            padding: 4rem 2rem;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow);
+            flex: 1 1 300px;
+            max-width: 360px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-img-placeholder {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-info h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-tag {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            align-self: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .product-info p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Sección Detalles de Atención y Cobertura */
+        .info-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .info-block {
+            flex: 1 1 450px;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .info-block h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list span.label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: #a09d98;
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--accent);
+        }
+
+        footer h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-credits {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #3d372e;
+            font-size: 0.8rem;
+        }
+
+        /* Botón Flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128c7e;
+        }
+
+        /* Adaptabilidad (Responsive) */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <h1>Agrocomercial Chicureo</h1>
+            <p>Fardos de Alfalfa Seleccionada</p>
+        </div>
+        <a href="https://wa.me/56936433269?text=Hola,%20me%20gustaría%20cotizar%20fardos%20de%20alfalfa" class="contact-btn-top" target="_blank">Llamar / Consultar</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Alimento Premium para tus Caballos y Ganadería</h2>
+            <p>Despacho directo a parcelas en Chicureo, Colina, Santiago y toda la Zona Norte. Alfalfa verde, fresca y libre de humedad.</p>
+            <div class="cta-container">
+                <a href="https://wa.me/56936433269?text=Hola,%20quiero%20hacer%20un%20pedido" class="btn-primary" target="_blank">Pedir por WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">¿Por qué elegirnos?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌾</div>
+                <h3>Calidad Garantizada</h3>
+                <p>Fardos verdes, limpios y con excelente aroma, perfectos para animales de alta exigencia nutricional.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚛</div>
+                <h3>Despacho Directo</h3>
+                <p>Llegamos directo a tu parcela o fundo de manera ágil y coordinada en toda la zona norte.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⛓️</div>
+                <h3>Formato Seguro</h3>
+                <p>Fardos compactados firmemente de 30 KG con amarra de alambre, asegurando un óptimo manejo y almacenaje.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="products-container">
+            <h2 class="section-title" style="text-align: center;">Nuestro Catálogo</h2>
+            <div class="products-grid">
+                
+                <div class="product-card">
+                    <div class="product-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&q=80&w=400')"></div>
+                    <div class="product-info">
+                        <span class="product-tag">Formato 30 KG</span>
+                        <h3>Fardo de Alfalfa</h3>
+                        <p>Alfalfa premium compactada con amarra de alambre. Alta densidad nutricional, ideal para equinos, bovinos y ovinos.</p>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1534073828943-f801091bb18c?auto=format&fit=crop&q=80&w=400')"></div>
+                    <div class="product-info">
+                        <span class="product-tag">Alta Digestibilidad</span>
+                        <h3>Pellet de Alfalfa</h3>
+                        <p>Formato sumamente práctico y limpio. Evita pérdidas de alimento, optimiza el espacio de almacenamiento y dosificación.</p>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=400')"></div>
+                    <div class="product-info">
+                        <span class="product-tag">Fibra de Calidad</span>
+                        <h3>Ballica Seleccionada</h3>
+                        <p>Excelente alternativa complementaria de fibra. Ideal para mantener un tránsito digestivo saludable en tu ganado.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <h2 class="section-title" style="text-align: center;">Logística y Horarios</h2>
+        <div class="info-layout">
+            
+            <div class="info-block">
+                <h3>🕒 Horario de Atención</h3>
+                <p style="margin-bottom: 1rem; color: #666;">Contamos con un horario extendido único para que nunca te quedes sin stock:</p>
+                <ul class="info-list">
+                    <li><span class="label">Lunes a Jueves</span> <span>11:00 AM – 10:00 PM</span></li>
+                    <li><span class="label">Viernes a Domingo</span> <span>11:00 AM – 12:00 AM (Medianoche)</span></li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <h3>📍 Ubicación y Cobertura</h3>
+                <ul class="info-list">
+                    <li><span class="label">Dirección Particular</span> <span>Alba 1, parcela 16, lote 13, Colina</span></li>
+                    <li><span class="label">Zonas de Cobertura</span> <span>Chicureo, Colina, Santiago, Zona Norte</span></li>
+                    <li><span class="label">Correo Electrónico</span> <span>agrocomercialchicureospa@gmail.com</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <h4>Agrocomercial Chicureo SpA</h4>
+        <p>Expertos en nutrición y forraje animal.</p>
+        <p>Teléfono de Contacto: +56 9 3643 3269</p>
+        <div class="footer-credits">
+            <p>&copy; 2026 Agrocomercial Chicureo SpA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/56936433269?text=Hola,%20vengo%20de%20la%20página%20web%20y%20necesito%20fardos" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 448 512" width="30" height="30" fill="white" style="margin-top: 2px;">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
+    </a>
+
+</body>
+</html>
